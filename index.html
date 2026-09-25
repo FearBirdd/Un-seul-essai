@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://cdn.jsdelivr.net https://challenges.cloudflare.com; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://*.supabase.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Un seul essai</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&display=swap">
+<style>
+:root{--bg:#2b3bff;--ink:#fff;--soft:#c9ceff;--slip:#fff;--slip-ink:#141a6b;--accent:#ffd84d;--bad:#ff6b6b;--ok:#3ddc84;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141a6b;--soft:#9aa3ff}}
+:root[data-theme="dark"]{--bg:#141a6b;--soft:#9aa3ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+main{max-width:34rem;margin:0 auto;padding:1.25rem 1.1rem 3rem}
+header{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+h1{font-size:clamp(2.6rem,12vw,4.2rem);line-height:.95;margin:0;font-weight:800;letter-spacing:-.03em}
+.meta{text-align:right;font-size:.9rem;color:var(--soft);line-height:1.4}
+.meta b{color:var(--accent);font-size:1.15rem}
+.lvl{margin-top:1.1rem;display:flex;gap:.8rem;align-items:center}
+.badge{flex:none;width:3rem;height:3rem;display:grid;place-items:center;background:var(--accent);color:#141a6b;font-weight:800;font-size:1.5rem;border-radius:.3rem}
+.lvl div.b{flex:1;min-width:0}
+.lvl .t{font-weight:700;display:flex;justify-content:space-between;gap:.5rem;font-size:.95rem}
+.lvl .t span{color:var(--soft);font-weight:400}
+.bar{height:.7rem;border:2px solid var(--ink);border-radius:.2rem;margin-top:.3rem;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);transition:width .6s ease}
+.themes{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem}
+.sw{padding:.4rem .8rem;font-size:.9rem;border-width:2px}
+.sw.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.sw:disabled{opacity:.45;cursor:not-allowed}
+.bdg{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem}
+.bd{border:2px solid var(--ink);border-radius:.3rem;padding:.3rem .6rem;font-size:.85rem;line-height:1.2}
+.bd.off{border:2px dashed var(--soft);color:var(--soft);opacity:.7}
+.lb{margin-top:2rem}
+.lb h2{margin:0 0 .6rem;font-size:1.4rem}
+.lb li{display:flex;align-items:center;gap:.7rem;padding:.55rem .2rem;border-bottom:1px solid var(--soft)}
+.lb li.me{background:rgba(255,255,255,.14)}
+.lb .rk{width:1.6rem;font-weight:800;color:var(--accent);text-align:center}
+.lb img{width:2rem;height:2rem;border-radius:50%;flex:none}
+.lb .nm{flex:1;min-width:0;line-height:1.25}
+.lb .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb .nm span,.lb .td{font-size:.85rem;color:var(--soft)}
+.lb .td{text-align:right;white-space:nowrap}
+.lb p{color:var(--soft);font-size:.95rem;margin:.3rem 0}
+.up{color:var(--accent);font-weight:800;margin:.3rem 0 0}
+.cat{margin:1.4rem 0 .9rem;font-size:1.05rem;color:var(--soft)}
+.cat strong{color:var(--ink)}
+ol{list-style:none;padding:0;margin:0;display:grid;gap:.55rem}
+.slip{background:var(--slip);color:var(--slip-ink);border-radius:.3rem;padding:.8rem 1rem;font-size:1.05rem;line-height:1.35;display:flex;gap:.8rem;align-items:baseline;animation:pop .35s ease-out}
+.slip i{font-style:normal;font-weight:800;color:var(--bad);min-width:1.4rem}
+.slip.locked{background:transparent;border:2px dashed var(--soft);color:var(--soft);animation:none;font-size:.95rem}
+.slip.locked i{color:var(--soft)}
+@keyframes pop{from{transform:translateY(8px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+.row{display:flex;gap:.5rem;margin-top:1.2rem}
+input{flex:1;min-width:0;font:inherit;font-size:1.1rem;padding:.8rem 1rem;border:3px solid var(--ink);border-radius:.3rem;background:transparent;color:var(--ink)}
+input::placeholder{color:var(--soft)}
+button{font:inherit;font-weight:700;cursor:pointer;border-radius:.3rem;border:3px solid var(--ink);padding:.8rem 1.1rem;background:var(--accent);color:#141a6b}
+button.ghost{background:transparent;color:var(--ink)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.msg{min-height:1.5rem;margin:.7rem 0 0;color:var(--accent);font-weight:700}
+.end{margin-top:1.4rem;border:3px solid var(--ink);border-radius:.3rem;padding:1.1rem}
+.end h2{margin:0 0 .3rem;font-size:1.6rem}
+.grid{font-size:1.8rem;letter-spacing:.15rem;margin:.6rem 0}
+.actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem}
+.next{margin-top:.8rem;color:var(--soft)}
+.demo{margin-top:2rem;font-size:.85rem;background:none;border:0;color:var(--soft);text-decoration:underline;padding:0;font-weight:400}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){.slip{animation:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>Un seul<br>essai</h1>
+<div class="meta"><div id="num"></div><div>Série : <b id="streak">0</b></div></div>
+</header>
+<div class="lvl"><div class="badge" id="lv">1</div><div class="b"><div class="t"><b id="ttl"></b><span id="xpt"></span></div><div class="bar"><i id="xpb" style="width:0"></i></div></div></div>
+<div class="themes" id="themes" role="group" aria-label="Thèmes de couleur"></div>
+<div class="bdg" id="bdg" aria-label="Badges de série"></div>
+<p class="cat">Mystère du jour : <strong id="cat"></strong></p>
+<ol id="clues"></ol>
+<div class="row" id="play">
+<input id="guess" type="text" maxlength="60" placeholder="Ta réponse" autocomplete="off" autocapitalize="none" enterkeyhint="go" aria-label="Ta réponse">
+<button id="go">Valider</button>
+</div>
+<div class="row" id="skiprow"><button class="ghost" id="skip">Indice suivant</button></div>
+<div id="cf" style="margin-top:.8rem"></div>
+<p class="msg" id="msg" role="status"></p>
+<section class="end" id="end" hidden>
+<h2 id="endt"></h2>
+<div id="enda"></div>
+<div id="xpg" class="up"></div>
+<div class="grid" id="grid" aria-label="Résultat"></div>
+<div class="actions"><button id="share">Partager mon résultat</button></div>
+<p class="next" id="next"></p>
+</section>
+<section class="lb" id="lbs"><h2>Classement</h2><p id="lbn"></p><ol id="lb"></ol>
+<div class="row"><input id="nm" maxlength="20" placeholder="Ton pseudo" aria-label="Ton pseudo" autocomplete="off"><button id="nmb">Changer</button></div>
+<p id="nmm" role="status"></p>
+<div class="row" id="emailrow"><input id="email" type="email" maxlength="120" placeholder="ton@email.fr" aria-label="Adresse e-mail" autocomplete="email"><button id="emailb">Garder ma progression</button></div>
+<p id="emailm" role="status"></p>
+<button class="demo" id="del">Supprimer mon compte et mes données</button>
+<button class="demo" id="relog">Déjà un compte relié à un e-mail ? Se reconnecter</button></section>
+<footer style="margin-top:2rem;font-size:.8rem;color:var(--soft)">
+<a href="/mentions-legales" style="color:inherit">Mentions légales</a> · <a href="/confidentialite" style="color:inherit">Confidentialité</a>
+</footer>
+</main>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+var SB_URL="https://clsyezushozhccgggiie.supabase.co",SB_KEY="sb_publishable_1eBsvWISrvt6g1xvHBKjlw_P8hD_opW",TURNSTILE_KEY="";
+var $=function(i){return document.getElementById(i)},SB,S=null,busy=false;
+var TID=["cobalt","menthe","corail","nuit","or"];
+var TH=[{id:"cobalt",n:"Cobalt",lv:1,bg:"#2b3bff",soft:"#c9ceff",ac:"#ffd84d"},{id:"menthe",n:"Menthe",lv:2,bg:"#0f7a5a",soft:"#bfeedd",ac:"#ffe08a"},{id:"corail",n:"Corail",lv:3,bg:"#c2410c",soft:"#ffd9c2",ac:"#fff1a8"},{id:"nuit",n:"Nuit",lv:5,bg:"#12121f",soft:"#a5a8c9",ac:"#7cf3c1"},{id:"or",n:"Or",lv:8,bg:"#4a2f00",soft:"#e8d3a0",ac:"#ffcf33"}];
+var BD=[[3,"🔥","Étincelle"],[7,"⚡","Semainier"],[14,"🌟","Deux semaines"],[30,"👑","Mois royal"],[100,"💎","Centurion"]];
+var T=["Curieux","Fureteur","Détective","Enquêteur","Limier","Fin limier","Expert","Maître","Sage","Légende"];
+var theme="cobalt";try{var t0=localStorage.getItem("use-theme");if(TID.indexOf(t0)>=0)theme=t0}catch(e){}
+function lv(x){var l=1,need=100;while(x>=need){x-=need;l++;need=100*l}return{l:l,cur:x,need:need}}
+function title(l){return T[Math.min(l-1,T.length-1)]}
+function topBadge(b){var e="";BD.forEach(function(x){if(b>=x[0])e=" "+x[1]});return e}
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e}
+function paint(l){var r=document.documentElement.style,t=TH.filter(function(x){return x.id===theme})[0];
+if(!t||t.id==="cobalt"||l<t.lv){["--bg","--soft","--accent"].forEach(function(k){r.removeProperty(k)});return}
+r.setProperty("--bg",t.bg);r.setProperty("--soft",t.soft);r.setProperty("--accent",t.ac)}
+function themes(l){var h=$("themes");h.innerHTML="";TH.forEach(function(t){var ok=l>=t.lv,b=el("button","sw"+(theme===t.id?" on":""),ok?t.n:"Niv. "+t.lv);
+b.disabled=!ok;b.style.background=t.bg;b.style.color="#fff";b.setAttribute("aria-pressed",theme===t.id);
+b.onclick=function(){theme=t.id;try{localStorage.setItem("use-theme",t.id)}catch(e){}render()};h.appendChild(b)})}
+function badges(best){var h=$("bdg");h.innerHTML="";BD.forEach(function(b){var ok=best>=b[0];
+h.appendChild(el("div","bd"+(ok?"":" off"),ok?b[1]+" "+b[2]+" · "+b[0]+" j":"🔒 "+b[0]+" jours"))})}
+function gridTxt(s){var g="";for(var i=1;i<=6;i++)g+=(s.status==="won"&&i===s.n)?"🟩":(i<=s.n?"🟥":"⬜");return g}
+function untilMidnight(){var p=new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Paris"})),m=new Date(p.getFullYear(),p.getMonth(),p.getDate()+1)-p;
+return Math.floor(m/36e5)+" h "+Math.floor(m%36e5/6e4)+" min"}
+function render(prev){
+if(!S)return;
+if(S.error){$("cat").textContent="Pas de mystère aujourd'hui";$("play").hidden=true;$("skiprow").hidden=true;return}
+var L=lv(S.xp);paint(L.l);themes(L.l);badges(S.best);
+$("lv").textContent=L.l;$("ttl").textContent=title(L.l);$("xpt").textContent=L.cur+" / "+L.need+" XP";$("xpb").style.width=Math.round(L.cur/L.need*100)+"%";
+$("num").textContent="Défi n° "+S.num;$("streak").textContent=S.streak;$("cat").textContent=S.theme+" — "+S.category;
+var ol=$("clues");ol.innerHTML="";
+for(var i=0;i<6;i++){var li=el("li","slip"+(i<S.n?"":" locked"));li.appendChild(el("i","",String(i+1)));li.appendChild(el("span","",i<S.n?S.clues[i]:"Indice verrouillé"));ol.appendChild(li)}
+var done=S.status!=="play";
+$("play").hidden=done;$("skiprow").hidden=done||S.n>=6;$("skip").textContent="Indice suivant (−1 point)";$("end").hidden=!done;
+if(done){var w=S.status==="won";
+$("endt").textContent=w?"Trouvé avec "+S.n+" indice"+(S.n>1?"s":"")+" !":"Raté pour aujourd'hui";
+$("enda").textContent="Réponse : "+S.answer+(w?" · "+(7-S.n)+"/6 points":"");
+var x="+"+S.gain+" XP";
+if(prev){if(lv(S.xp).l>lv(prev.xp).l){x+=" · Niveau "+lv(S.xp).l+" : "+title(lv(S.xp).l)+" !";TH.forEach(function(t){if(t.lv===lv(S.xp).l)x+=" Thème « "+t.n+" » débloqué."})}
+BD.forEach(function(b){if(b[0]>prev.best&&b[0]<=S.best)x+=" · Badge débloqué : "+b[1]+" "+b[2]+" !"})}
+$("xpg").textContent=x;$("grid").textContent=gridTxt(S);$("next").textContent="Prochain mystère dans "+untilMidnight()+".";}}
+function rpc(fn,args){return SB.rpc(fn,args||{}).then(function(r){if(r.error)throw r.error;return r.data})}
+function act(fn,args){if(busy||!S)return;busy=true;var prev=S;
+rpc(fn,args).then(function(d){busy=false;if(d.error){$("msg").textContent="Erreur : "+d.error;return}
+$("msg").textContent=(d.status==="play"&&d.n>prev.n)?"Non, un indice de plus.":"";S=d;$("guess").value="";render(prev);nudge();if(d.status!=="play")loadLB()}).catch(fail)}
+function loadLB(){rpc("leaderboard").then(function(rows){var ol=$("lb");ol.innerHTML="";
+(Array.isArray(rows)?rows:[]).forEach(function(v,i){var li=el("li",v.me?"me":"");
+li.appendChild(el("div","rk",String(i+1)));
+var nm=el("div","nm"),b=el("b","",String(v.name||"Joueur").slice(0,20)+(v.me?" (toi)":""));
+nm.appendChild(b);nm.appendChild(el("span","","Niv. "+lv(int(v.xp)).l+" · "+int(v.xp)+" XP · série "+int(v.streak)+topBadge(Math.max(int(v.best),int(v.streak)))));
+li.appendChild(nm);
+li.appendChild(el("div","td",v.today?(v.today.status==="won"?"🟩 "+int(v.today.n)+"/6":"🟥 raté"):"—"));ol.appendChild(li)});
+$("lbn").textContent=rows&&rows.length>1?"Classé par XP. La dernière colonne montre le résultat du jour.":"Tu es seul pour l'instant : partage le lien à tes amis."}).catch(function(){})}
+function int(v){v=Math.floor(Number(v));return isFinite(v)&&v>0?v:0}
+$("go").onclick=function(){var v=$("guess").value.trim();if(!v){$("msg").textContent="Écris une réponse.";return}act("guess",{txt:v.slice(0,60)})};
+$("guess").onkeydown=function(e){if(e.key==="Enter")$("go").click()};
+$("skip").onclick=function(){act("skip_clue")};
+$("share").onclick=function(){var t="Un seul essai n° "+S.num+"\n"+gridTxt(S)+" "+(S.status==="won"?S.n+"/6":"X/6");
+try{if(navigator.share){navigator.share({text:t});return}}catch(e){}
+try{navigator.clipboard.writeText(t).then(function(){$("share").textContent="Copié !"});return}catch(e){}$("msg").textContent=t};
+$("nmb").onclick=function(){rpc("set_name",{txt:$("nm").value}).then(function(d){
+$("nmm").textContent=d.error?"2 à 20 caractères : lettres, chiffres, espaces, - et _.":"Pseudo mis à jour.";if(!d.error){S.name=d.name;loadLB()}}).catch(fail)};
+var isAnon=null;
+function emailUi(u){
+isAnon=!!(u&&u.is_anonymous);
+if(u&&u.email&&!u.is_anonymous){$("emailrow").hidden=true;$("emailm").textContent="Connecté avec "+u.email+" · ta progression te suit d'un appareil à l'autre.";return}
+$("emailrow").hidden=false;
+if(u&&u.email&&u.is_anonymous){$("emailm").textContent="Vérifie ta boîte mail et clique sur le lien pour confirmer "+u.email+".";return}
+if(S)nudge()}
+function nudge(){if(isAnon&&S&&!S.error&&S.streak>=3)$("emailm").textContent="Série de "+S.streak+" jours : ajoute ton e-mail pour ne jamais la perdre si tu changes d'appareil.";
+else if($("emailm").textContent.indexOf("Série de")===0)$("emailm").textContent=""}
+$("emailb").onclick=function(){var v=$("email").value.trim();
+if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){$("emailm").textContent="Adresse e-mail non valide.";return}
+$("emailb").disabled=true;
+SB.auth.updateUser({email:v}).then(function(r){$("emailb").disabled=false;
+if(r.error){$("emailm").textContent="Erreur : "+r.error.message;return}
+$("emailm").textContent="Un lien de confirmation vient d'être envoyé à "+v+". Clique dessus pour garder ta progression.";
+}).catch(function(){$("emailb").disabled=false;fail()})};
+$("del").onclick=function(){if(!confirm("Supprimer définitivement ton compte, ta progression et ton classement ?"))return;
+rpc("delete_me").then(function(){return SB.auth.signOut()}).then(function(){location.reload()}).catch(fail)};
+$("relog").onclick=function(){var v=prompt("Ton adresse e-mail :");if(!v)return;v=v.trim();
+if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){alert("Adresse e-mail non valide.");return}
+SB.auth.signOut().then(function(){return SB.auth.signInWithOtp({email:v})}).then(function(r){
+alert(r.error?"Erreur : "+r.error.message:"Un lien de connexion vient d'être envoyé à "+v+". Ouvre-le pour continuer sur cet appareil.")}).catch(fail)};
+function fail(m){$("msg").textContent="Connexion impossible, réessaie dans un instant.";busy=false;
+try{if(SB)SB.rpc("log_error",{m:String((m&&m.message)||m||"erreur inconnue").slice(0,300)})}catch(e){}}
+function withCaptcha(){
+if(!TURNSTILE_KEY)return Promise.resolve(undefined);
+return new Promise(function(res){
+if(!window.turnstile){setTimeout(function(){res(withCaptcha())},300);return}
+turnstile.render("#cf",{sitekey:TURNSTILE_KEY,callback:res,"error-callback":function(){res(undefined)}})})}
+function boot(){
+if(!window.supabase||SB_URL.indexOf("VOTRE")>=0){$("msg").textContent="Configure SB_URL et SB_KEY dans le code.";return}
+SB=supabase.createClient(SB_URL,SB_KEY);
+SB.auth.onAuthStateChange(function(_ev,session){emailUi(session&&session.user)});
+SB.auth.getSession().then(function(r){if(r.data.session)return null;
+return withCaptcha().then(function(tok){return SB.auth.signInAnonymously(tok?{options:{captchaToken:tok}}:undefined)})})
+.then(function(){return SB.auth.getUser()}).then(function(r){emailUi(r.data&&r.data.user)})
+.then(function(){return rpc("start_today")}).then(function(d){S=d;render(null);nudge();loadLB();setInterval(loadLB,60000)}).catch(fail)}
+boot();
+</script>
+</body>
+</html>
